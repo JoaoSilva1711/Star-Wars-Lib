@@ -1,0 +1,82 @@
+
+.character-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(550px, 1fr));
+  gap: 20px;
+  background-size:cover;
+  //background-image: url('../../assets/images/Star_background.jpg');
+  background-color: #000000;
+  min-height: 100vh;
+  margin: 0; /* Reset margin to eliminate any default body margin */
+  padding: 0; /* Reset padding to eliminate any default body padding */
+}
+
+.character-card {
+  border: 1px solid #000000;
+  padding: 10px;
+  background-color: #000000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  height: 300px;
+  overflow: hidden;
+  position: relative;
+
+  &:hover {
+    border: 1px solid #fcdf2b;
+  }
+
+
+}
+
+.character-image {
+  display: flex;
+  justify-content: center;
+  //align-items: center;
+  width: 120%;
+  height: 120%;
+  margin: 0;
+  padding: 0;
+}
+
+.character-image img {
+  // max-width: 100%;
+  // max-height: 100%;
+  // opacity: 0; /* Initially set the opacity to 0 */
+}
+
+
+.name {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  padding: 8px;
+  background-color: rgba(0, 0, 0, 0.148);
+  color: white;
+  box-sizing: border-box;
+  font-family: 'Star Wars', sans-serif;
+  font-weight: lighter;
+  
+}
+
+.info {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  padding: 8px;
+  background-color: rgba(0, 0, 0, 0.424);
+  color: white;
+  box-sizing: border-box;
+  font-family: 'Star Wars', sans-serif;
+  font-weight: normal;
+}
+
+.loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 300px; /* Set a minimum height to maintain layout */
+  font-size: 1.5rem;
+  color: #fcdf2b;
+}

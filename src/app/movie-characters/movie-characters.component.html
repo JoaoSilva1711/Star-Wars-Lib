@@ -1,0 +1,31 @@
+<!-- <div class="character-grid">
+  <div *ngFor="let character of characters" class="character-card" style="color: #fcdf2b">
+    <div class="character-image">
+      <img [src]="character.image" alt="{{ character.name }}" (load)="onImageLoad($event)">
+    </div>
+    <div class="name">
+      <h3>{{ character.name }}</h3>
+    </div>
+    <div class="info">
+      <p>Height: {{ character.height }}</p>
+      <p>Mass: {{ character.mass }}</p>
+    </div>
+  </div>
+   <img src="../assets/images/LukeSkywalker.jpg">
+</div> -->
+
+
+<div class="character-grid">
+    <div *ngFor="let character of characters$ | async" class="character-card" style="color: #fcdf2b">
+      <div class="character-image">
+        <img [src]="character.image" alt="{{ character.name }}" (load)="onImageLoad($event)">
+      </div>
+      <div class="name">
+        <h3>{{ character.name }}</h3>
+      </div>
+      <div class="info">
+        <p>Height: {{ character.height }}</p>
+        <p>Mass: {{ character.mass }}</p>
+      </div>
+    </div>
+</div>
