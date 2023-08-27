@@ -1,31 +1,121 @@
-<!-- <div class="character-grid">
-  <div *ngFor="let character of characters" class="character-card" style="color: #fcdf2b">
-    <div class="character-image">
-      <img [src]="character.image" alt="{{ character.name }}" (load)="onImageLoad($event)">
+<div *ngIf="selectedCharacter" class="outside-container">
+  <div class="expanded-character-card">
+    <div class="closer-container">
+      <button mat-fab class="close-button" color="warn" aria-label="Close" (click)="toggleCharacterInfo(selectedCharacter)">
+        <mat-icon>close</mat-icon>
+      </button>
     </div>
-    <div class="name">
-      <h3>{{ character.name }}</h3>
+    <div class="scroll-icon" *ngIf="isInfoScrollable">
+      <mat-icon>arrow_downward</mat-icon>
     </div>
-    <div class="info">
-      <p>Height: {{ character.height }}</p>
-      <p>Mass: {{ character.mass }}</p>
+    <img class="character-image" [src]="selectedCharacter.image" alt="{{ selectedCharacter.name }}">
+    <div class="info" id="infoContainer" #infoContainer>
+      <p class="aditional-name">{{ selectedCharacter.name }}</p>
+      <p>Hair Color: {{ selectedCharacter.hair_color }}</p>
+      <p>Skin Color: {{ selectedCharacter.skin_color }}</p>
+      <p>Hair Color: {{ selectedCharacter.hair_color }}</p>
+      <p>Skin Color: {{ selectedCharacter.skin_color }}</p>
+      <p>Skin Color: {{ selectedCharacter.skin_color }}</p>
+      <p>Hair Color: {{ selectedCharacter.hair_color }}</p>
+      <p>Skin Color: {{ selectedCharacter.skin_color }}</p>
+      <p>Skin Color: {{ selectedCharacter.skin_color }}</p>
+      <p>Hair Color: {{ selectedCharacter.hair_color }}</p>
+      <p>Skin Color: {{ selectedCharacter.skin_color }}</p>
     </div>
   </div>
-   <img src="../assets/images/LukeSkywalker.jpg">
-</div> -->
-
+</div>
 
 <div class="character-grid">
-    <div *ngFor="let character of characters$ | async" class="character-card" style="color: #fcdf2b">
+    <div *ngFor="let character of characters$ | async" class="character-card" #characterCard style="color: #fcdf2b">
+      <div class="character-image">
+        <img [src]="character.image" alt="{{ character.name }}" (load)="onImageLoad($event)">
+      </div>
+      <div class="button-container">
+        <button mat-fab class="info-button" color="warn" aria-label="Info" (click)="toggleCharacterInfo(character)">
+          <mat-icon>info</mat-icon>
+        </button>
+      </div>
+      <div class="name">
+        <h3>{{ character.name }}</h3>
+      </div>
+    </div>
+</div>
+
+
+
+
+
+
+<!-- <div *ngIf="selectedCharacter" class="outside-container">
+  <div class="expanded-character-container">
+    <div class="example-button-container">
+      <button mat-fab class="close-button" color="warn" aria-label="Example icon button with a home icon" (click)="toggleCharacterInfo(selectedCharacter)">
+        <mat-icon>close</mat-icon>
+      </button>
+    </div>
+    <div class="expanded-character-card">
+      <div class="character-image">
+        <img [src]="selectedCharacter.image" alt="{{ selectedCharacter.name }}">
+      </div>
+      <div class="name">
+        <h3>{{ selectedCharacter.name }}</h3>
+      </div>
+    </div>
+    <div class="additional-info">
+      <div class="info">
+        <p>Hair Color: {{ selectedCharacter.hair_color }}</p>
+        <p>Skin Color: {{ selectedCharacter.skin_color }}</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="character-grid">
+    <div *ngFor="let character of characters$ | async" class="character-card" #characterCard style="color: #fcdf2b">
       <div class="character-image">
         <img [src]="character.image" alt="{{ character.name }}" (load)="onImageLoad($event)">
       </div>
       <div class="name">
         <h3>{{ character.name }}</h3>
       </div>
-      <div class="info">
-        <p>Height: {{ character.height }}</p>
-        <p>Mass: {{ character.mass }}</p>
+      <div class="example-button-container">
+        <button mat-fab class="info-button" color="warn" aria-label="Example icon button with a home icon" (click)="toggleCharacterInfo(character)">
+          <mat-icon>info</mat-icon>
+        </button>
       </div>
     </div>
-</div>
+</div> -->
+
+
+
+
+
+
+
+
+
+
+<!-- <mat-grid-list cols="3" rowHeight="390px" gutterSize="5px" class="character-grid">
+  <mat-grid-tile *ngFor="let character of characters$ | async">
+    <div class="character-card" #characterCard style="color: #fcdf2b">
+      <div class="character-image">
+        <img [src]="character.image" alt="{{ character.name }}" (load)="onImageLoad($event)">
+      </div>
+      <div class="name">
+        <h3>{{ character.name }}</h3>
+      </div>
+      <button class="info-button" (click)="toggleCharacterInfo(character)">
+        {{ character.showAdditionalInfo ? 'Less info' : 'More info' }}
+      </button>
+    </div>
+  </mat-grid-tile>
+</mat-grid-list> -->
+
+
+      <!-- <button class="info-button" (click)="toggleCharacterInfo(selectedCharacter)">
+        {{ selectedCharacter.showAdditionalInfo ? 'Less info' : 'More info' }}
+      </button> -->
+      
+      <!-- <button class="info-button" (click)="toggleCharacterInfo(character)">
+        {{ character.showAdditionalInfo ? 'Less info' : 'More info' }}
+      </button> -->

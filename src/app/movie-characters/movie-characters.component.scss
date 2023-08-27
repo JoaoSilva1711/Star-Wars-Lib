@@ -1,14 +1,14 @@
-
 .character-grid {
+  padding-top: 20rem;
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(550px, 1fr));
   gap: 20px;
   background-size:cover;
-  //background-image: url('../../assets/images/Star_background.jpg');
   background-color: #000000;
   min-height: 100vh;
   margin: 0; /* Reset margin to eliminate any default body margin */
   padding: 0; /* Reset padding to eliminate any default body padding */
+  
 }
 
 .character-card {
@@ -26,25 +26,95 @@
   &:hover {
     border: 1px solid #fcdf2b;
   }
-
-
 }
+
 
 .character-image {
   display: flex;
   justify-content: center;
-  //align-items: center;
   width: 120%;
   height: 120%;
   margin: 0;
   padding: 0;
 }
 
-.character-image img {
-  // max-width: 100%;
-  // max-height: 100%;
-  // opacity: 0; /* Initially set the opacity to 0 */
+//**------------------EXPANDED------------------ **//
+.outside-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.808);
+  display: flex;
+  z-index: 100;
 }
+
+.expanded-character-card {
+  transform: translate(-50%, -50%);
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  background-color: rgba(0, 0, 0, 0.9);
+  display: flex;
+  flex-direction: row; /* Change to row to align image and info side by side */
+  align-items: center; /* Align items vertically */
+  border: 15px solid #fcdf2b;
+  border-radius: 35px;
+  width: 1350px;
+  height: 550px;
+}
+
+.expanded-character-card .character-image {
+  max-width: 70%; /* Adjust the image width as desired */
+  width: 100%; /* Make sure the image fills its container */
+  max-height: 100%; /* Adjust the image width as desired */
+  height: 100%; /* Maintain aspect ratio */
+  margin-right: 20px;
+}
+
+.expanded-character-card .info {
+  // flex: 1; /* Use the remaining available space */
+  right: 10%;
+  // top: 15px;
+  display: flex;
+  font-size: 20px;
+  flex-direction: column;
+  justify-content: flex-start; /* Align content to the top */
+  position: absolute;
+  color: white;
+  max-height: calc(100% - 30px); /* Adjust the height as needed */
+  overflow: auto;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* Internet Explorer and Edge */
+  &::-webkit-scrollbar {
+    width: 0; /* Safari and Chrome */
+  }
+}
+
+.scroll-icon {
+  position: absolute;
+  bottom: 10px;
+  right: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  color: rgb(255, 255, 0);
+  opacity: 0.5;
+  transition: opacity 0.3s;
+
+  &:hover {
+    opacity: 1;
+  }
+}
+
+.expanded-character-card .info .aditional-name {
+  font-size: 30px; /* Adjust the font size as needed */
+  font-weight: bold; /* You can adjust the font weight if needed */
+}
+
+//**-------INFO & BUTTON---------- **//
 
 
 .name {
@@ -60,23 +130,108 @@
   
 }
 
-.info {
+.info-button{
   position: absolute;
-  bottom: 0;
-  right: 0;
-  padding: 8px;
-  background-color: rgba(0, 0, 0, 0.424);
-  color: white;
+  bottom: 10px;
+  right: 10px;
+  padding: 10px;
+  background-color: rgb(0, 0, 0);
+  border: 3px solid #fcdf2b; /* Add a white border with a 2px width */
+  border-radius: 20px;
+  color: #fcdf2b;
   box-sizing: border-box;
   font-family: 'Star Wars', sans-serif;
   font-weight: normal;
+  cursor: pointer;
+  
+  &:hover {
+    border: 5px solid #fcdf2b;
+  }
 }
 
-.loading {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 300px; /* Set a minimum height to maintain layout */
-  font-size: 1.5rem;
-  color: #fcdf2b;
+.button-container {
+  align-self: flex-end; /* Align the button container to the right */
+  margin-top: 10px;
+  margin-right: 10px;
 }
+
+
+.closer-container {
+  position: absolute; /* Set the button container to absolute position */
+  top: 15px; /* Position from the top */
+  right: 15px; /* Position from the right */
+}
+
+
+.close-button{
+  position: absolute;
+  background-color: rgb(0, 0, 0);
+  border: 3px solid #fcdf2b; /* Add a white border with a 2px width */
+  border-radius: 15px;
+  color: #fcdf2b;
+  box-sizing: border-box;
+  cursor: pointer;
+  top: 0; /* Position from the top */
+  right: 5px; /* Position from the right */
+  
+  mat-icon {
+    transition: transform 0.3s ease; /* Apply the transition only to mat-icon */
+  }
+
+  /* Apply the transform to mat-icon on hover */
+  &:hover mat-icon {
+    transform: scale(1.5); /* Increase the mat-icon size on hover */
+  }
+}
+
+
+//-----------------------------------------------------------------
+
+
+// .expanded-character-container {
+//   position: fixed;
+//   top: 50%; /* Position from the top */
+//   left: 50%; /* Position from the left */
+//   transform: translate(-50%, -50%); /* Center the container */
+//   background-color: rgba(82, 81, 81, 0.9);
+//   display: flex;
+//   flex-direction: column;
+//   align-items: center;
+//   z-index: 100;
+//   padding-top: 5rem;
+// }
+
+// .button-container {
+//   display: flex;
+//   justify-content: center;
+//   width: 120px;
+// }
+
+// .character-image img {
+//   max-width: 100%; 
+//   max-height: 100%; 
+//   object-fit: contain; 
+// }
+
+
+// .additional-info {
+//   background-color: rgba(0, 0, 0, 0.8);
+//   color: white;
+//   padding: 20px;
+//   max-width: 80%;
+//   margin-top: 20px;
+//   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+// }
+
+// .additional-info p {
+//   margin: 0;
+//   margin-bottom: 10px;
+// }
+
+// .additional-info {
+//   position: absolute;
+//   background-color: #111;
+//   color: #ffffff;
+//   padding: 50px;
+//   margin-top: 50px;
+// }
