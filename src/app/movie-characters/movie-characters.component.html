@@ -1,0 +1,42 @@
+<div *ngIf="selectedCharacter" class="outside-container">
+  <div class="expanded-character-card">
+    <div class="closer-container">
+      <button mat-fab class="close-button" color="warn" aria-label="Close" (click)="toggleCharacterInfo(selectedCharacter)">
+        <mat-icon>close</mat-icon>
+      </button>
+    </div>
+    <img class="character-image" [src]="selectedCharacter.image" alt="{{ selectedCharacter.name }}">
+    <div class="info" id="infoContainer" #infoContainer>
+      <p class="aditional-name">{{ selectedCharacter.name }}</p>
+      <ng-container *ngFor="let property of characterProperties">
+        <p><strong>{{ property }}:</strong> {{ selectedCharacter[property] }}</p>
+      </ng-container>
+    </div>
+    <div class="scroll-icon" *ngIf="isInfoScrollable">
+      <mat-icon>arrow_downward</mat-icon>
+    </div>
+  </div>
+</div>
+
+<div class="character-grid">
+  <div *ngFor="let character of characters" class="character-card" #characterCard style="color: #fcdf2b">
+    <div class="character-image">
+      <img [src]="character.image" alt="{{ character.name }}" (load)="onImageLoad($event)">
+    </div>
+    <button mat-fab class="info-button" color="warn" 
+    aria-label="Info"
+    matTooltip="Click for more Info"
+    (click)="toggleCharacterInfo(character)">
+      <mat-icon>info</mat-icon>
+    </button>
+    <div class="name">
+      <h3>{{ character.name }}</h3>
+    </div>
+  </div>
+
+</div>
+<div class="load-more-container">
+  <button mat-raised-button class="load-more black-background" (click)="nextPage()" [disabled]="currentPage >= totalPages" style="background-color:#fcdf2b; color: black;">
+    Load More
+  </button>
+</div>
